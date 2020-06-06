@@ -1,9 +1,10 @@
 package appetite.com.data.network
 
 import appetite.com.data.network.responses.HeadResponse
+import appetite.com.data.network.responses.MainCategory
+import appetite.com.data.network.responses.MainTasksItem
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,8 +18,21 @@ interface Api {
         @Query("apiKey") apiKey: String
     ): Observable<HeadResponse>
 
+    @GET("/api?%20appid=\$2y\$12\$esyosghhXSh6LxcX17N/suiqeJGJq/VQ9QkbqvImtE4JMWxz7WqYS&lang=ru&opt=view_cat&requests=no&cat_id=only_parent")
+    fun getCategories(): Observable<MutableList<MainCategory>>
+
+    @GET("/api?%20appid=\$2y\$12\$esyosghhXSh6LxcX17N/suiqeJGJq/VQ9QkbqvImtE4JMWxz7WqYS&lang=ru&opt=view_cat&cat_id=only_subcat&requests=no")
+    fun getSubCategores(@Query("id") id: String): Observable<MutableList<MainCategory>>
+
+    @GET("/api?appid=\$2y\$12\$esyosghhXSh6LxcX17N/suiqeJGJq/VQ9QkbqvImtE4JMWxz7WqYS&opt=view_task&tasks=all")
+    fun getTasks(@Query("city") city: String,@Query("page") page: String): Observable<MutableList<MainTasksItem>>
+
+
     companion object {
-        operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): Api {
+        operator fun invoke(
+            networkConnectionInterceptor: NetworkConnectionInterceptor,
+            baseUrl: String
+        ): Api {
 
             val okkHttpClient = OkHttpClient.Builder()
                 .addInterceptor(networkConnectionInterceptor)
@@ -26,7 +40,7 @@ interface Api {
 
             return Retrofit.Builder()
                 .client(okkHttpClient)
-                .baseUrl("https://newsapi.org/v2/")
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()

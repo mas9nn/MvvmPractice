@@ -22,7 +22,7 @@ class ProfileFragment : Fragment(), KodeinAware {
 
     override val kodein by kodein()
 
-    private val factory: ProfileViewModelFactory by instance()
+    private val factory: ProfileViewModelFactory by instance(arg = "https://newsapi.org/v2/")
 
 
     private lateinit var viewModel: ProfileViewModel

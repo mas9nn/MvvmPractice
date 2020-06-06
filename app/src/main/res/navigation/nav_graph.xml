@@ -15,4 +15,9 @@
         android:name="appetite.com.ui.fragments.profile.ProfileFragment"
         android:label="Quotes"
         tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/tab3"
+        android:name="appetite.com.ui.fragments.tasks.TasksFragment"
+        android:label="Quotes"
+        tools:layout="@layout/tasks_fragment" />
 </navigation>

@@ -71,7 +71,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:gravity="end"
-                        android:text="@{viewmodel.publishedAt}"
+                        android:text="@{viewmodel.toDate(viewmodel.publishedAt)}"
                         android:textColor="@android:color/white"
                         android:textSize="20dp"
                         app:layout_constraintBottom_toBottomOf="parent"
