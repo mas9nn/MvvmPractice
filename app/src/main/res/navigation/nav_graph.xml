@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/tab1"
+    tools:ignore="UnusedNavigation">
+    <fragment
+        android:id="@+id/tab1"
+        android:name="appetite.com.ui.fragments.home.HomeFragment"
+        android:label="Profile"
+        tools:layout="@layout/home_fragment" />
+    <fragment
+        android:id="@+id/tab2"
+        android:name="appetite.com.ui.fragments.profile.ProfileFragment"
+        android:label="Quotes"
+        tools:layout="@layout/profile_fragment" />
+</navigation>
