@@ -17,7 +17,6 @@ class ProfileViewModel(private val repository: NewsRepository) : ViewModel() {
             Schedulers.newThread()
         )?.observeOn(AndroidSchedulers.mainThread())?.subscribe({
             news.value = it
-            repository.saveNews(Observable.just(it.articles))
         }, {
 
         })

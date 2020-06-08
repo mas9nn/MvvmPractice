@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import appetite.com.R
 import appetite.com.data.network.responses.Articles
 import appetite.com.databinding.ItemNewsBinding
-import appetite.com.ui.main.MainActivity
+import appetite.com.ui.DetailsActivity
 
 class NewsAdapter(private val news: List<Articles>) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {
@@ -34,7 +34,14 @@ class NewsAdapter(private val news: List<Articles>) :
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.itemNewsBinding.viewmodel = news[position]
         holder.itemNewsBinding.mainRoot.setOnClickListener {
-            startActivity(it.context, Intent(it.context, MainActivity::class.java), null)
+            startActivity(it.context, Intent(it.context, DetailsActivity::class.java).also {
+                it.putExtra("title", news.get(position).title)
+                it.putExtra("time", news.get(position).publishedAt)
+                it.putExtra("description", news.get(position).description)
+                it.putExtra("author", news.get(position).source?.name)
+                it.putExtra("image", news.get(position).urlToImage)
+                it.putExtra("site", news.get(position).url)
+            }, null)
         }
     }
 }
