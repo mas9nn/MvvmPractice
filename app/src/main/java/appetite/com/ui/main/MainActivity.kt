@@ -1,4 +1,4 @@
-package appetite.com.ui
+package appetite.com.ui.main
 
 import android.app.Activity
 import android.content.Intent

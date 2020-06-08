@@ -1,8 +1,6 @@
 package appetite.com.data.network
 
-import appetite.com.data.network.responses.HeadResponse
-import appetite.com.data.network.responses.MainCategory
-import appetite.com.data.network.responses.MainTasksItem
+import appetite.com.data.network.responses.*
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -25,7 +23,20 @@ interface Api {
     fun getSubCategores(@Query("id") id: String): Observable<MutableList<MainCategory>>
 
     @GET("/api?appid=\$2y\$12\$esyosghhXSh6LxcX17N/suiqeJGJq/VQ9QkbqvImtE4JMWxz7WqYS&opt=view_task&tasks=all")
-    fun getTasks(@Query("city") city: String,@Query("page") page: String): Observable<MutableList<MainTasksItem>>
+    fun getTasks(
+        @Query("city") city: String,
+        @Query("page") page: String
+    ): Observable<MutableList<MainTasksItem>>
+
+    @GET("/api?appid=\$2y\$12\$esyosghhXSh6LxcX17N/suiqeJGJq/VQ9QkbqvImtE4JMWxz7WqYS&lang=ru&opt=view_task")
+    fun getTaskById(
+        @Query("tasks") id: String
+    ): Observable<MutableList<ExampleSubList>>
+
+    @GET("api?appid=\$2y\$12\$esyosghhXSh6LxcX17N/suiqeJGJq/VQ9QkbqvImtE4JMWxz7WqYS&lang=ru&opt=view_user&param=more")
+    fun getUser(
+        @Query("user") id: String
+    ): Observable<User>
 
 
     companion object {

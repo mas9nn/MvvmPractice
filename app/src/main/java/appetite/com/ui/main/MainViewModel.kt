@@ -1,4 +1,4 @@
-package appetite.com.ui
+package appetite.com.ui.main
 
 import androidx.lifecycle.ViewModel
 

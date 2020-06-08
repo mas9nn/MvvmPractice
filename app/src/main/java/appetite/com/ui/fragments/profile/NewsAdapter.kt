@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import appetite.com.R
 import appetite.com.data.network.responses.Articles
 import appetite.com.databinding.ItemNewsBinding
-import appetite.com.ui.MainActivity
+import appetite.com.ui.main.MainActivity
 
 class NewsAdapter(private val news: List<Articles>) :
     RecyclerView.Adapter<NewsAdapter.NewsViewHolder>() {

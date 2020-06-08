@@ -1,5 +1,7 @@
 package appetite.com.data.network.responses
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -13,8 +15,10 @@ class Articles(
     var urlToImage: String,
     var publishedAt: String,
     var content: String
-){
-    fun toDate(date: String):String?{
+) {
+
+
+    fun toDate(date: String): String? {
         val date1: Date
         var t: String? = null
         val simpleDateFormat =

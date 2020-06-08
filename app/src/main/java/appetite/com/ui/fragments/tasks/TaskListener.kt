@@ -7,4 +7,5 @@ import appetite.com.data.network.responses.MainTasksItem
 interface TaskListener {
     fun onSuccess(data: MutableList<MainCategory>,position: Int)
     fun onSuccessTasks(data: MutableLiveData<MutableList<MainTasksItem>>)
+    fun onFailed(message:String)
 }

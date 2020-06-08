@@ -4,7 +4,8 @@ import android.content.Context
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.BindingAdapter
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Callback
+import com.squareup.picasso.Picasso
 
 fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -12,8 +13,13 @@ fun Context.toast(message: String) {
 
 @BindingAdapter("image")
 fun loadImage(view: ImageView, url: String?) {
-    if (url!=null) {
-        Glide.with(view).load(url).into(view)
+    if (url != null) {
+        Picasso.get().load(url).fetch(object : Callback {
+            override fun onSuccess() {
+                Picasso.get().load(url).into(view)
+            }
+            override fun onError(e: Exception) {}
+        })
     }
 }
 
