@@ -18,7 +18,9 @@ fun loadImage(view: ImageView, url: String?) {
             override fun onSuccess() {
                 Picasso.get().load(url).into(view)
             }
-            override fun onError(e: Exception) {}
+            override fun onError(e: Exception) {
+                Picasso.get().load("https://i.ytimg.com/vi/r599eVo0XLM/maxresdefault.jpg").into(view)
+            }
         })
     }
 }

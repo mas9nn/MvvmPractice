@@ -12,8 +12,8 @@ class ProfileViewModel(private val repository: NewsRepository) : ViewModel() {
 
     var news = MutableLiveData<HeadResponse>()
 
-    fun getNews() {
-        val a =repository.getAllNews("us", "95942b0cae0d4f9fb0ebace232cc4d5c")?.subscribeOn(
+    fun getNews(country:String = "ru") {
+        val a =repository.getAllNews(country, "95942b0cae0d4f9fb0ebace232cc4d5c")?.subscribeOn(
             Schedulers.newThread()
         )?.observeOn(AndroidSchedulers.mainThread())?.subscribe({
             news.value = it
